@@ -6,5 +6,5 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface SubscriptionRepository extends JpaRepository<JSubscription, UUID> {
-    List<JSubscription> findByCourseId(UUID courseId);
+  List<JSubscription> findByCourseId(UUID courseId);
 }

@@ -11,26 +11,27 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SubscriptionService {
 
-    private final SubscriptionRepository subscriptionRepository;
-    private final MailService mailService;
-    private final UserMapper userMapper;
+  private final SubscriptionRepository subscriptionRepository;
+  private final MailService mailService;
+  private final UserMapper userMapper;
 
-    public void notifySubscribers(UUID courseId) {
-        List<JSubscription> subscriptions = subscriptionRepository.findByCourseId(courseId);
+  public void notifySubscribers(UUID courseId) {
+    List<JSubscription> subscriptions = subscriptionRepository.findByCourseId(courseId);
 
-        for (JSubscription subscription : subscriptions) {
-            var user = userMapper.toModel(subscription.getUser());
+    for (JSubscription subscription : subscriptions) {
+      var user = userMapper.toModel(subscription.getUser());
 
-            mailService.sendMail(
-                    user.getEmail(),
-                    "Nouvelle information sur votre cours",
-                    """
-                    Bonjour %s,
+      mailService.sendMail(
+          user.getEmail(),
+          "Nouvelle information sur votre cours",
+          """
+          Bonjour %s,
 
-                    Une nouvelle mise à jour est disponible.
+          Une nouvelle mise à jour est disponible.
 
-                    Merci.
-                    """.formatted(user.getFirstname()));
-        }
+          Merci.
+          """
+              .formatted(user.getFirstname()));
     }
+  }
 }

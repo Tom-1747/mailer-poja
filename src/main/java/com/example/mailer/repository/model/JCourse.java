@@ -23,14 +23,14 @@ import lombok.Setter;
 @Builder
 @Table(name = "course")
 public class JCourse {
-    @Id @GeneratedValue private UUID id;
+  @Id @GeneratedValue private UUID id;
 
-    @Column(nullable = false, unique = true)
-    private String title;
+  @Column(nullable = false, unique = true)
+  private String title;
 
-    private Instant start;
-    private Instant end;
+  private Instant start;
+  private Instant end;
 
-    @OneToMany(mappedBy = "course")
-    private List<JSubscription> subscriptions;
+  @OneToMany(mappedBy = "course")
+  private List<JSubscription> subscriptions;
 }

@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 @AllArgsConstructor
 public class CourseService {
-    private final CourseMapper mapper;
-    private final CourseRepository repository;
+  private final CourseMapper mapper;
+  private final CourseRepository repository;
 
-    public Course getById(UUID id) {
-        return mapper.toModel(
-                repository.findById(id).orElseThrow(() -> new RuntimeException("Course not found")));
-    }
+  public Course getById(UUID id) {
+    return mapper.toModel(
+        repository.findById(id).orElseThrow(() -> new RuntimeException("Course not found")));
+  }
 }

@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MailService {
 
-    private final Mailer mailer;
+  private final Mailer mailer;
 
-    @SneakyThrows
-    public void sendMail(String to, String subject, String html) {
-        InternetAddress recipient = new InternetAddress(to);
-        mailer.accept(new Email(recipient, List.of(), List.of(), subject, html, List.of()));
-    }
+  @SneakyThrows
+  public void sendMail(String to, String subject, String html) {
+    InternetAddress recipient = new InternetAddress(to);
+    mailer.accept(new Email(recipient, List.of(), List.of(), subject, html, List.of()));
+  }
 }
