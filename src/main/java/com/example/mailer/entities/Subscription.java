@@ -1,19 +1,17 @@
 package com.example.mailer.entities;
 
-import jakarta.persistence.*;
 import java.time.Instant;
 import java.util.UUID;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
+@Getter
+@Setter
+@AllArgsConstructor
 public class Subscription {
-
-  @Id
-  @GeneratedValue(strategy = GenerationType.UUID)
   private UUID id;
-
-  @ManyToOne private User user;
-
-  @ManyToOne private Course course;
-
+  private User user;
+  private Course course;
   private Instant createdAt;
 }
